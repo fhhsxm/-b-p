@@ -32,7 +32,7 @@ class Player:
     def output(self, currentRound, board, mode):
         if mode == 'position':  # 给出己方下棋的位置
             another = board.getNext(self.isFirst, currentRound)  # 己方的允许落子点
-            if another != None: return another
+            if another != tuple(): return another
 
             available = board.getNone(not self.isFirst)  # 对方的允许落子点
             if not available:   # 整个棋盘已满
@@ -46,3 +46,4 @@ class Player:
             shuffle(directionList)
             for direction in directionList:
                 if board.move(self.isFirst, direction): return direction
+               
